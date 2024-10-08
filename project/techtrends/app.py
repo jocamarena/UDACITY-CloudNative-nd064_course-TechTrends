@@ -4,9 +4,14 @@ import logging
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
+get_db_connection_count = 0
+get_db_post_count = 0
+
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
+    global get_db_connection_count
+    get_db_connection_count += 1
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
     return connection
@@ -26,8 +31,10 @@ app.config['SECRET_KEY'] = 'your secret key'
 # Define the main route of the web application 
 @app.route('/')
 def index():
+    global get_db_post_count
     connection = get_db_connection()
     posts = connection.execute('SELECT * FROM posts').fetchall()
+    get_db_post_count = len(posts)
     connection.close()
     return render_template('index.html', posts=posts)
 
@@ -39,6 +46,7 @@ def post(post_id):
     if post is None:
       return render_template('404.html'), 404
     else:
+      app.logger.info(post)
       return render_template('post.html', post=post)
 
 # Define the About Us page
@@ -79,7 +87,7 @@ def health():
 @app.route('/metrics')
 def metrics():
     response = app.response_class(
-            response=json.dumps({"status":"success","code":0,"data":{"UserCount":140,"UserCountActive":23}}),
+            response=json.dumps({"db_connection_count": get_db_connection_count, "post_count": get_db_post_count}),
             status=200,
             mimetype='application/json'
     )
