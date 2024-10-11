@@ -1,7 +1,7 @@
 FROM python:3.8
 LABEL maintainer="Jose Camarena"
 
-COPY . /app
+COPY ./techtrends /app
 WORKDIR /app
 RUN pwd
 RUN ls -l
