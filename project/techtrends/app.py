@@ -1,5 +1,6 @@
 import sqlite3
 import logging
+import sys
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
@@ -103,4 +104,9 @@ if __name__ == "__main__":
                        format='%(asctime)s - %(levelname)s - %(message)s', 
                        datefmt='%Y-%m-%d %H:%M:%S',
                        level=logging.DEBUG)
+   handler = logging.StreamHandler()
+   handler.setLevel(logging.DEBUG)  # Set the desired log level
+   formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+   handler.setFormatter(formatter)
+   app.logger.addHandler(handler)
    app.run(host='0.0.0.0', port='3111')
