@@ -3,7 +3,8 @@ LABEL maintainer="Jose Camarena"
 
 COPY . /app
 WORKDIR /app
-RUN pip install -r requirements.txt
+RUN python3 --version
+RUN pip install -r ./techtrends/requirements.txt
 RUN python3 init_db.py
 EXPOSE 3111
 
