@@ -6,7 +6,7 @@ WORKDIR /app
 RUN pwd
 RUN ls -l
 RUN python3 --version
-RUN pip install -r ./techtrends/requirements.txt
+RUN pip install -r ./project/techtrends/requirements.txt
 RUN python3 init_db.py
 EXPOSE 3111
 
