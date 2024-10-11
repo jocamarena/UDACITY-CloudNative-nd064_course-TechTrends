@@ -44,14 +44,16 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
+      app.logger.debug("Article not found: 404")
       return render_template('404.html'), 404
     else:
-      app.logger.info(post)
+      app.logger.debug("Article  found")
       return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
 def about():
+    app.logger.debug("About  found")
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -72,6 +74,7 @@ def create():
 
             return redirect(url_for('index'))
 
+    app.logger.debug("post created ")
     return render_template('create.html')
 
 #health endpoint
@@ -96,5 +99,8 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-   logging.basicConfig(filename='app.log',level=logging.DEBUG)
+   logging.basicConfig(filename='app.log',
+                       format='%(asctime)s - %(levelname)s - %(message)s', 
+                       datefmt='%Y-%m-%d %H:%M:%S',
+                       level=logging.DEBUG)
    app.run(host='0.0.0.0', port='3111')
