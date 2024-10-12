@@ -4,6 +4,7 @@ metadata:
   name: techtrends
   namespace: sandbox
 spec:
+  type: ClusterIP
   selector:
     app.kubernetes.io/name: techtrends
   ports:
