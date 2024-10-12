@@ -16,9 +16,11 @@ container:
   image:
     pullPolicy: IfNotPresent
   livenessProbe:
-    path: /healthz  
+    path: /healthz 
+    port: 3111 
   readinessProbe:
     path: /healthz
+    port: 3111
 
 resources:
   limits:

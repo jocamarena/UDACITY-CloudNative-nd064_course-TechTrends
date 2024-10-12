@@ -14,11 +14,13 @@ repository:
 container:
   port: 3111
   image:
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
   livenessProbe:
     path: /healthz  
+    port: 3111
   readinessProbe:
     path: /healthz
+    port: 3111
 
 resources:
   limits:
