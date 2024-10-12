@@ -45,11 +45,10 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-    #   app.logger.error("Article not found: 404")
       app.logger.error("Article by id:{0} was not found, 404.".format(post_id))
       return render_template('404.html'), 404
     else:
-      app.logger.debug("Article  found")
+      app.logger.debug("Article by id:{0} was found, 200.".format(post_id, get_post.__name__))
       return render_template('post.html', post=post)
 
 # Define the About Us page
