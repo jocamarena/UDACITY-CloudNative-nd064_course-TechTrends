@@ -48,13 +48,13 @@ def post(post_id):
       app.logger.error("Article by id:{0} was not found, 404.".format(post_id))
       return render_template('404.html'), 404
     else:
-      app.logger.debug("Article by id:{0} was found, 200.".format(post_id, get_post.__name__))
+      app.logger.debug("Article by id:{0} title:{1} was found, 200.".format(post_id, get_post.__name__))
       return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
 def about():
-    app.logger.debug("About  found")
+    app.logger.debug("About  found, 200")
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -75,7 +75,7 @@ def create():
 
             return redirect(url_for('index'))
 
-    app.logger.debug("post created ")
+    app.logger.debug("post created title:{0} , 201".format(title))
     return render_template('create.html')
 
 #health endpoint
@@ -86,7 +86,7 @@ def health():
             status=200,
             mimetype='application/json'
     )
-    app.logger.debug("healthz endpoint selected")
+    app.logger.debug("healthz endpoint selected, 200")
     return response
 
 @app.route('/metrics')
@@ -96,7 +96,7 @@ def metrics():
             status=200,
             mimetype='application/json'
     )
-    app.logger.debug("metrics endpoint selected")
+    app.logger.debug("metrics endpoint selected, 200")
     return response
 
 
