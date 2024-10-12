@@ -9,8 +9,16 @@ docker run -d -p 7111:3111 techtrends:latest
 docker logs $(docker ps -q --filter "publish=7111" --filter "ancestor=techtrends")
 ## Logs from the container running the TechTrends application
 # TODO: paste logs from the Docker container 
- * Serving Flask app 'app' (lazy loading)
- * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
- * Debug mode: off
+2024-10-12 16:48:41,462 - app - DEBUG - Article by id:1 title:2020 CNCF Annual Report was found, 200.
+2024-10-12 16:48:43,093 - app - DEBUG - Article by id:2 title:KubeCon + CloudNativeCon 2021 was found, 200.
+2024-10-12 16:48:44,596 - app - DEBUG - Article by id:3 title:Kubernetes v1.20 Release Notes was found, 200.
+2024-10-12 16:48:46,006 - app - DEBUG - Article by id:4 title:CNCF Cloud Native Interactive Landscape was found, 200.
+2024-10-12 16:48:47,933 - app - DEBUG - Article by id:5 title:CNCF Cloud Native Definition v1.0 was found, 200.
+2024-10-12 16:48:49,454 - app - DEBUG - Article by id:4 title:CNCF Cloud Native Interactive Landscape was found, 200.
+2024-10-12 16:48:51,624 - app - DEBUG - About  found, 200
+2024-10-12 16:49:30,968 - app - DEBUG - Post created with title:My first post by Jose Camarena, 201.
+2024-10-12 16:49:33,495 - app - DEBUG - Article by id:7 title:My first post by Jose Camarena was found, 200.
+2024-10-12 16:49:43,608 - app - DEBUG - Article by id:3 title:Kubernetes v1.20 Release Notes was found, 200.
+2024-10-12 16:49:46,640 - app - ERROR - Article by id:9 was not found, 404.
+2024-10-12 16:49:55,574 - app - ERROR - Post saved without title, 500.
+2024-10-12 16:50:08,538 - app - DEBUG - Post created with title:My Second post by Jose Camarena, 201.
