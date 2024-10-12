@@ -1,0 +1,20 @@
+2024-10-12 09:19:55 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3111
+ * Running on http://172.30.211.163:3111
+2024-10-12 09:19:55 - INFO - [33mPress CTRL+C to quit[0m
+2024-10-12 09:19:58 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/home/josej/udacity/TechTrends/project/techtrends/.myvenv/lib/python3.8/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/josej/udacity/TechTrends/project/techtrends/.myvenv/lib/python3.8/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/josej/udacity/TechTrends/project/techtrends/.myvenv/lib/python3.8/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/josej/udacity/TechTrends/project/techtrends/.myvenv/lib/python3.8/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "project/techtrends/app.py", line 37, in index
+    posts = connection.execute('SELECT * FROM posts').fetchall()
+sqlite3.OperationalError: no such table: posts
+2024-10-12 09:19:58 - INFO - 127.0.0.1 - - [12/Oct/2024 09:19:58] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-10-12 09:19:59 - INFO - 127.0.0.1 - - [12/Oct/2024 09:19:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
