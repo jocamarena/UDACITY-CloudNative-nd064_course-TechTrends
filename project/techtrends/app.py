@@ -48,7 +48,7 @@ def post(post_id):
       app.logger.error("Article by id:{0} was not found, 404.".format(post_id))
       return render_template('404.html'), 404
     else:
-      app.logger.debug("Article by id:{0} title:{1} was found, 200.".format(post_id, get_post.__name__))
+      app.logger.debug("Article by id:{0} title:{1} was found, 200.".format(post_id, post['title']))
       return render_template('post.html', post=post)
 
 # Define the About Us page
@@ -75,7 +75,8 @@ def create():
 
             return redirect(url_for('index'))
 
-    app.logger.debug("post created title:{0} , 201".format(title))
+    # app.logger.debug("post created title:{0} , 201".format(title))
+    app.logger.debug("Post created with title:{0}, 201.".format(title))
     return render_template('create.html')
 
 #health endpoint
