@@ -8,7 +8,7 @@ namespace:
 
 repository:
   image:
-    name: jcamarena/techtrends
+    name: techtrends
     tag: latest
 
 container:
