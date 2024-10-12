@@ -7,9 +7,9 @@ spec:
   project: default            # ArgoCD project; usually "default" unless customized
 
   source:
-    repoURL: https://github.com/jocamarena/UDACITY-CloudNative-nd064_course-TechTrends/tree/main/project    # URL of the Git repository
+    repoURL: https://github.com/jocamarena/UDACITY-CloudNative-nd064_course-TechTrends    # URL of the Git repository
     targetRevision: HEAD                                       # Git branch, tag, or commit to track
-    path: helm                                     # Path within the repo to deploy (Helm, Kustomize, etc.)
+    path: project/helm                                     # Path within the repo to deploy (Helm, Kustomize, etc.)
     
     helm:                                                      # If you use Helm charts, provide these fields
       valueFiles:                                              
