@@ -86,6 +86,7 @@ def health():
             status=200,
             mimetype='application/json'
     )
+    app.logger.debug("healthz endpoint selected")
     return response
 
 @app.route('/metrics')
@@ -95,6 +96,7 @@ def metrics():
             status=200,
             mimetype='application/json'
     )
+    app.logger.debug("metrics endpoint selected")
     return response
 
 
