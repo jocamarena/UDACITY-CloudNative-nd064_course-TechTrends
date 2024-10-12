@@ -66,17 +66,18 @@ def create():
 
         if not title:
             flash('Title is required!')
+            app.logger.error("Post saved without title, 500.")
         else:
             connection = get_db_connection()
             connection.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
                          (title, content))
             connection.commit()
             connection.close()
-
+            app.logger.debug("Post created with title:{0}, 201.".format(title))
             return redirect(url_for('index'))
 
     # app.logger.debug("post created title:{0} , 201".format(title))
-    app.logger.debug("Post created with title:{0}, 201.".format(title))
+    # app.logger.debug("Post created with title:{0}, 201.".format(title))
     return render_template('create.html')
 
 #health endpoint
