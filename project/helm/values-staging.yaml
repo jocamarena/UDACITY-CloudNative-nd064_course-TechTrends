@@ -1,0 +1,32 @@
+label:
+  name: techtrends
+
+replicas: 3  
+
+namespace:
+  name: staging
+
+repository:
+  image:
+    name: jcamarena/techtrends
+    tag: latest
+
+container:
+  port: 3111
+  image:
+    pullPolicy: IfNotPresent
+  livenessProbe:
+    path: /healthz  
+  readinessProbe:
+    path: /healthz
+
+resources:
+  limits:
+    memory: "128Mi"
+    cpu: "500m"
+  requests:
+    memory: 90Mi"
+    cpu: "300m"   
+
+service:
+  port: 5111       

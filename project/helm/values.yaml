@@ -1,0 +1,32 @@
+label:
+  name: techtrends
+
+replicas: 1  
+
+namespace:
+  name: techtrends
+
+repository:
+  image:
+    name: jcamarena/techtrends
+    tag: latest
+
+container:
+  port: 3111
+  image:
+    pullPolicy: IfNotPresent
+  livenessProbe:
+    path: /healthz  
+  readinessProbe:
+    path: /healthz
+
+resources:
+  limits:
+    memory: "128Mi"
+    cpu: "500m"
+  requests:
+    memory: "64Mi"
+    cpu: "250m"   
+
+service:
+  port: 4111    

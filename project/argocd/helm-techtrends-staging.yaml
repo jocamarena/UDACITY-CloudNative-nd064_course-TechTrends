@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: techtrends-staging           # Name of the application
+  namespace: argocd           # Namespace where ArgoCD is running
+spec:
+  project: default            # ArgoCD project; usually "default" unless customized
+
+  source:
+    repoURL: https://github.com/jocamarena/UDACITY-CloudNative-nd064_course-TechTrends.git    # URL of the Git repository
+    targetRevision: HEAD                                       # Git branch, tag, or commit to track
+    path: project/helm                                     # Path within the repo to deploy (Helm, Kustomize, etc.)
+    
+    helm:                                                      # If you use Helm charts, provide these fields
+      valueFiles:                                              
+        - values-staging.yaml                                          # Helm values file
+
+  destination:
+    server: https://kubernetes.default.svc                     # API server for the destination cluster
+    namespace: default    
