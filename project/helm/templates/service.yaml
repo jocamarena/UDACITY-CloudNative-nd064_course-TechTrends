@@ -8,5 +8,5 @@ spec:
     app.kubernetes.io/name: techtrends
   ports:
     - protocol: TCP
-      port: {{.Values.service.port}} 4111
+      port: {{.Values.service.port}}
       targetPort: 3111
