@@ -111,7 +111,7 @@ if __name__ == "__main__":
    
     # logging.basicConfig()
 
-   handler = logging.StreamHandler(sys.stdout)
+   handler = logging.StreamHandler()
    handler.setLevel(logging.DEBUG)  # Set the desired log level
    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
    handler.setFormatter(formatter)
