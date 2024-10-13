@@ -104,14 +104,14 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-#    logging.basicConfig(filename='app.log',
-#                        format='%(asctime)s - %(levelname)s - %(message)s', 
-#                        datefmt='%Y-%m-%d %H:%M:%S',
-#                        level=logging.DEBUG)
+   logging.basicConfig(filename='app.log',
+                       format='%(asctime)s - %(levelname)s - %(message)s', 
+                       datefmt='%Y-%m-%d %H:%M:%S',
+                       level=logging.DEBUG)
    
-    # logging.basicConfig()
 
-   handler = logging.StreamHandler()
+
+   handler = logging.StreamHandler(sys.stdout)
    handler.setLevel(logging.DEBUG)  # Set the desired log level
    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
    handler.setFormatter(formatter)
